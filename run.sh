@@ -3,7 +3,7 @@
 GCLOUD_INSTALL_DIR="$WERCKER_STEP_ROOT/google-cloud-sdk/bin"
 kubectl="$GCLOUD_INSTALL_DIR/kubectl"
 
-echo "VERSION: 4.0.5"
+echo "VERSION: 4.0.6"
 
 gcloud_auth_config() {
 
@@ -223,6 +223,7 @@ main() {
 }
 
 display_version() {
+  gcloud components install kubectl --quiet
   info "Running kubectl version:"
   "$kubectl" version --client
   echo ""
