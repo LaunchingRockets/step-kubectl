@@ -6,18 +6,18 @@ build:
        # - shellcheck
         - script:
             name: install apk packages
-            code: apk update && apk add ca-certificates openssh curl
+            code: apk update && apk add ca-certificates openssh curl python
 
         - script:
             name: config
             code: |
                 GCLOUD_VERSION="271.0.0-linux-x86_64"
                 export GCLOUD_DIRNAME="google-cloud-sdk"
-                export GCLOUD_SHA="53caea9133e3ed0efe26164e8a29751a3caf770f"
+                export GCLOUD_SHA="3743da6f73035827ab7154d65d4ceabebc985987"
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
                 export UPX_VERSION="3.96"
-                export UPX_SHA="d7ba31cab8ce8d95d2c10e88d2ec787ac52005ef"
+                export UPX_SHA="8cd7609b6302efd2fb0e81f8bac595e068764352"
                 export UPX_DIRNAME="upx-${UPX_VERSION}-amd64_linux"
                 export UPX_FILENAME="${UPX_DIRNAME}.tar.xz"
                 export UPX_URL="https://github.com/upx/upx/releases/download/v${UPX_VERSION}/${UPX_FILENAME}"
@@ -55,7 +55,7 @@ build:
         - script:
             name: Install kubectl gcloud component
             code: |
-                yes | ${GCLOUD_DIRNAME}/bin/gcloud components install kubectl
+                yes | ${GCLOUD_DIRNAME}/bin/gcloud components install kubectl --quiet
 
         - script:
             name: Copy gcloud to output dir
