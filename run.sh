@@ -3,7 +3,7 @@
 GCLOUD_INSTALL_DIR="$WERCKER_STEP_ROOT/google-cloud-sdk/bin"
 kubectl="$GCLOUD_INSTALL_DIR/kubectl"
 
-echo "TEST 123"
+echo "VERSION: 4.0.1"
 
 gcloud_auth_config() {
 
@@ -18,6 +18,7 @@ gcloud_auth_config() {
   if [ ! -n "$WERCKER_KUBECTL_GKE_CLUSTER_PROJECT" ]; then
     fail "GKE cluster project name must be provided."
   fi
+
 
   gcloud="$GCLOUD_INSTALL_DIR/gcloud"
   gcloud_key_file="$WERCKER_STEP_ROOT/gcloud.json"
