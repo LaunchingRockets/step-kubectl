@@ -1,6 +1,8 @@
 box: wercker/default
 build:
     steps:
+        - shellcheck:
+          files: run.sh
         - script:
               name: config
               code: |
@@ -16,8 +18,7 @@ build:
                   export UPX_FILENAME="${UPX_DIRNAME}.tar.xz"
                   export UPX_URL="https://github.com/upx/upx/releases/download/v${UPX_VERSION}/${UPX_FILENAME}"
                   echo "Installing version ${GCLOUD_VERSION} of the Google Cloud SDK"
-        - shellcheck:
-          files: run.sh
+
 
         - script:
             name: fetch upx
@@ -78,9 +79,3 @@ build:
             code: |
                 du -csh $WERCKER_OUTPUT_DIR/*
                 du -csh $WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/*
-
-
-publish:
-    steps:
-        - internal/publish-step:
-              private: true
