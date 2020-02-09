@@ -3,6 +3,8 @@
 GCLOUD_INSTALL_DIR="$WERCKER_STEP_ROOT/google-cloud-sdk/bin"
 kubectl="$GCLOUD_INSTALL_DIR/kubectl"
 
+echo "TEST 123"
+
 gcloud_auth_config() {
 
   if [ ! -n "$WERCKER_KUBECTL_GKE_CLUSTER_NAME" ]; then
